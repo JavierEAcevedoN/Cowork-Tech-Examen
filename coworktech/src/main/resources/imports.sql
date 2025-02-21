@@ -1,0 +1,37 @@
+INSERT INTO espacios (nombre, tipo, capacidadmax, disponibilidad) VALUES
+('Oficina Ejecutiva', 'OficinaPrivada', 5, 'Activo'),
+('Sala de Juntas A', 'SalaReuniones', 10, 'Activo'),
+('Coworking Norte', 'EscritorioCompartido', 15, 'Inactivo'),
+('Sala Creativa', 'SalaReuniones', 8, 'Activo'),
+('Oficina Gerencial', 'OficinaPrivada', 4, 'Inactivo'),
+('Coworking Central', 'EscritorioCompartido', 20, 'Activo'),
+('Sala de Juntas B', 'SalaReuniones', 12, 'Activo'),
+('Escritorio Flexible 1', 'EscritorioCompartido', 1, 'Activo'),
+('Escritorio Flexible 2', 'EscritorioCompartido', 1, 'Activo'),
+('Oficina Privada 101', 'OficinaPrivada', 3, 'Activo'),
+('Oficina Privada 102', 'OficinaPrivada', 3, 'Inactivo'),
+('Sala de Reuniones VIP', 'SalaReuniones', 15, 'Activo'),
+('Espacio Colaborativo A', 'EscritorioCompartido', 10, 'Activo'),
+('Espacio Colaborativo B', 'EscritorioCompartido', 8, 'Inactivo'),
+('Sala de Innovación', 'SalaReuniones', 6, 'Activo'),
+('Oficina Ejecutiva 202', 'OficinaPrivada', 5, 'Activo'),
+('Hot Desk 1', 'EscritorioCompartido', 2, 'Activo'),
+('Hot Desk 2', 'EscritorioCompartido', 2, 'Inactivo'),
+('Sala de Estrategia', 'SalaReuniones', 9, 'Activo'),
+('Oficina Premium', 'OficinaPrivada', 7, 'Inactivo');
+
+
+INSERT INTO reservas (idespacio, fechareservainicio, fechareservafin, estado) VALUES
+(1, '2025-03-01 08:00:00', '2025-03-01 10:00:00', 'Pendiente'),
+(2, '2025-03-02 09:00:00', '2025-03-02 11:00:00', 'Confirmada'),
+(3, '2025-03-03 14:00:00', '2025-03-03 16:00:00', 'Cancelada'),
+(4, '2025-03-04 10:00:00', '2025-03-04 12:00:00', 'Confirmada'),
+(5, '2025-03-05 13:00:00', '2025-03-05 15:00:00', 'Pendiente'),
+(6, '2025-03-06 15:00:00', '2025-03-06 17:00:00', 'Pendiente'),
+(7, '2025-03-07 08:30:00', '2025-03-07 10:30:00', 'Confirmada'),
+(8, '2025-03-08 11:00:00', '2025-03-08 13:00:00', 'Cancelada'),
+(9, '2025-03-09 16:00:00', '2025-03-09 18:00:00', 'Pendiente'),
+(10, '2025-03-10 12:00:00', '2025-03-10 14:00:00', 'Confirmada'),
+(11, '2025-03-11 09:00:00', '2025-03-11 11:00:00', 'Pendiente'),
+(12, '2025-03-12 14:30:00', '2025-03-12 16:30:00', 'Cancelada'),
+(13, '2025-03-13 10:00:00', '2025-03-13 12:00:00', 'Confirmada');
