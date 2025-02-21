@@ -25,18 +25,39 @@
                     <option value="meeting">Sala de reuniones</option>
                     <option value="desk">Escritorio compartido</option>
                 </select>
-                <button id="filter-btn" class="btn">Filtrar</button>
+                <select id="availability-filter">
+                    <option value="">Toda disponibilidad</option>
+                    <option value="available">Disponible</option>
+                    <option value="unavailable">No disponible</option>
+                </select>
+                <button id="filter-spaces-btn" class="btn">Filtrar</button>
             </div>
-
-            <div class="spaces-grid" id="spaces-container">
         
+            <div class="spaces-grid" id="spaces-container">
             </div>
         </section>
 
 
         <section id="reservations-view" class="view">
-            <div class="reservations-list" id="reservations-container">
+            <div class="filters reservations-filters">
+                <div class="date-filter">
+                    <label for="reservation-filter-date">Fecha:</label>
+                    <input type="date" id="reservation-filter-date">
+                </div>
+                <div class="status-filter">
+                    <label for="reservation-status-filter">Estado:</label>
+                    <select id="reservation-status-filter">
+                        <option value="">Todos los estados</option>
+                        <option value="PENDING">Pendiente</option>
+                        <option value="CONFIRMED">Confirmada</option>
+                        <option value="CANCELLED">Cancelada</option>
+                    </select>
+                </div>
+                <button id="filter-reservations-btn" class="btn">Filtrar</button>
+                <button id="clear-filters-btn" class="btn btn-secondary">Limpiar filtros</button>
+            </div>
         
+            <div class="reservations-list" id="reservations-container">
             </div>
         </section>
     </main>

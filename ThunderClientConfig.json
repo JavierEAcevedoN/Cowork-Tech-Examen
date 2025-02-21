@@ -1,0 +1,148 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "ThunderClientConfig",
+    "collectionId": "12ebba44-f085-4028-98da-2ca26539150e",
+    "dateExported": "2025-02-21T23:39:47.428Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "294f8401-6927-4b1f-9a75-388b908f2dfc",
+            "colId": "12ebba44-f085-4028-98da-2ca26539150e",
+            "containerId": "",
+            "name": "setReserva",
+            "url": "/reservas",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2025-02-21T22:15:43.384Z",
+            "modified": "2025-02-21T22:38:24.997Z",
+            "headers": []
+        },
+        {
+            "_id": "9c5f660d-33e8-4f6a-9612-50f4bc0f20e9",
+            "colId": "12ebba44-f085-4028-98da-2ca26539150e",
+            "containerId": "",
+            "name": "updateReserva",
+            "url": "/reservas",
+            "method": "PATCH",
+            "sortNum": 50000,
+            "created": "2025-02-21T22:16:07.551Z",
+            "modified": "2025-02-21T22:38:28.181Z",
+            "headers": []
+        },
+        {
+            "_id": "06061f9c-0250-4723-9a9d-45e966dd53b0",
+            "colId": "12ebba44-f085-4028-98da-2ca26539150e",
+            "containerId": "",
+            "name": "getReservas",
+            "url": "/reservas",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2025-02-21T22:16:22.862Z",
+            "modified": "2025-02-21T22:38:34.277Z",
+            "headers": []
+        },
+        {
+            "_id": "e59e6ca0-bb47-4630-b379-a94f77ed43a9",
+            "colId": "12ebba44-f085-4028-98da-2ca26539150e",
+            "containerId": "",
+            "name": "getReservasByFecha",
+            "url": "/reservas",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2025-02-21T22:21:38.407Z",
+            "modified": "2025-02-21T22:38:36.784Z",
+            "headers": []
+        },
+        {
+            "_id": "0a86a00d-d9b8-4d1b-ab62-cff41addb2d8",
+            "colId": "12ebba44-f085-4028-98da-2ca26539150e",
+            "containerId": "",
+            "name": "getReservasByEstado",
+            "url": "/reservas",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2025-02-21T22:21:59.895Z",
+            "modified": "2025-02-21T22:38:39.520Z",
+            "headers": []
+        },
+        {
+            "_id": "9beceba8-c357-45b2-8b65-ea973da08c42",
+            "colId": "12ebba44-f085-4028-98da-2ca26539150e",
+            "containerId": "",
+            "name": "setEspacio",
+            "url": "/espacios",
+            "method": "POST",
+            "sortNum": 95000,
+            "created": "2025-02-21T22:28:35.903Z",
+            "modified": "2025-02-21T22:38:48.627Z",
+            "headers": []
+        },
+        {
+            "_id": "aeabfac4-1b04-4373-b40a-6184dbf9c898",
+            "colId": "12ebba44-f085-4028-98da-2ca26539150e",
+            "containerId": "",
+            "name": "updateEspacio",
+            "url": "/espacios",
+            "method": "PATCH",
+            "sortNum": 102500,
+            "created": "2025-02-21T22:28:52.311Z",
+            "modified": "2025-02-21T22:38:54.379Z",
+            "headers": []
+        },
+        {
+            "_id": "a994dac0-a757-4457-8b07-2d436b2eb91f",
+            "colId": "12ebba44-f085-4028-98da-2ca26539150e",
+            "containerId": "",
+            "name": "getEspacios",
+            "url": "/espacios",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2025-02-21T22:23:27.991Z",
+            "modified": "2025-02-21T22:38:56.546Z",
+            "headers": []
+        },
+        {
+            "_id": "d5c7ff01-66f5-456a-b239-e960520a26ce",
+            "colId": "12ebba44-f085-4028-98da-2ca26539150e",
+            "containerId": "",
+            "name": "getEspaciosByTipo",
+            "url": "/espacios",
+            "method": "GET",
+            "sortNum": 130000,
+            "created": "2025-02-21T22:24:06.719Z",
+            "modified": "2025-02-21T22:38:58.536Z",
+            "headers": []
+        },
+        {
+            "_id": "4a9225ff-47fc-48ac-ac3e-9cd3b6fcc4b0",
+            "colId": "12ebba44-f085-4028-98da-2ca26539150e",
+            "containerId": "",
+            "name": "getEspaciosByDisponibilidad",
+            "url": "/espacios",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2025-02-21T22:28:16.495Z",
+            "modified": "2025-02-21T22:39:00.627Z",
+            "headers": []
+        },
+        {
+            "_id": "8e9f4c79-af8b-4b3c-a1ff-3991578bb7a2",
+            "colId": "12ebba44-f085-4028-98da-2ca26539150e",
+            "containerId": "",
+            "name": "deleteEspacio",
+            "url": "/espacios",
+            "method": "DELETE",
+            "sortNum": 150000,
+            "created": "2025-02-21T23:38:27.661Z",
+            "modified": "2025-02-21T23:38:41.935Z",
+            "headers": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "localhost:8081/api"
+        }
+    },
+    "ref": "wtJLDQ98OLykhOCuTY8taiIRAn2jvE57Xj3IbZWZpd-rPSHwP7DzhteinVm23yD8Fchutfco3MObB-Oy5Up6pA"
+}
