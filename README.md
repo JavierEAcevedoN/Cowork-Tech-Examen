@@ -12,17 +12,17 @@ Actualmente, las reservas se gestionan de forma manual mediante llamadas y corre
 
 Para mejorar este proceso, CoworkTech ha decidido modernizar su sistema con una **API REST** que permita:
 
-✔ Consultar los espacios disponibles 🏢\
-✔ Reservar espacios en función de la disponibilidad 📆\
-✔ Gestionar las reservas fácilmente ✅
+✔ Consultar los espacios disponibles \
+✔ Reservar espacios en función de la disponibilidad \
+✔ Gestionar las reservas fácilmente 
 
-Tu misión como **desarrollador backend** es construir esta API utilizando **Spring Boot** con **PostgreSQL**, asegurando un buen manejo de datos, validaciones y errores. 🚀
+Tu misión como **desarrollador backend** es construir esta API utilizando **Spring Boot** con **PostgreSQL**, asegurando un buen manejo de datos, validaciones y errores. 
 
 ---
 
 ## Especificaciones del sistema
 
-### 🏢 Gestión de Espacios de Coworking
+###  Gestión de Espacios de Coworking
 
 Se deben registrar distintos tipos de espacios:
 
@@ -60,7 +60,7 @@ Los usuarios pueden reservar espacios disponibles. Cada reserva contiene:
 
 #### Reglas para las reservas
 
-🚫 No puede haber dos reservas en el mismo horario para el mismo espacio.\
+ No puede haber dos reservas en el mismo horario para el mismo espacio.\
 ✔ Los escritorios compartidos pueden ser reservados sin restricciones.\
 ✏ El usuario solo puede **modificar o cancelar** reservas con estado "Pendiente".
 
@@ -116,7 +116,7 @@ La API está documentada con **Swagger**, incluye:
 
 Base de datos relacional, PostgreSQL con Spring Data JPA.
 
-#### 🔹 Tablas requeridas:
+#### Tablas requeridas:
 
 - **Espacios** (con las características mencionadas)
 - **Reservas** (con restricciones para evitar solapamientos)
