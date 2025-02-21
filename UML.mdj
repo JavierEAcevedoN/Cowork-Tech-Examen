@@ -227,6 +227,21 @@
 										},
 										{
 											"_type": "ERDColumnView",
+											"_id": "AAAAAAGVKnZ0pF5+BsQ=",
+											"_parent": {
+												"$ref": "AAAAAAGVKh0r7904Xjo="
+											},
+											"model": {
+												"$ref": "AAAAAAGVKnZ0ml57y7Y="
+											},
+											"font": "Arial;13;0",
+											"left": 101,
+											"top": 513,
+											"width": 431.55029296875,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
 											"_id": "AAAAAAGVKh3tK91TECE=",
 											"_parent": {
 												"$ref": "AAAAAAGVKh0r7904Xjo="
@@ -236,7 +251,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 101,
-											"top": 513,
+											"top": 528,
 											"width": 431.55029296875,
 											"height": 13
 										},
@@ -267,7 +282,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 101,
-											"top": 528,
+											"top": 543,
 											"width": 431.55029296875,
 											"height": 13
 										}
@@ -276,14 +291,14 @@
 									"left": 96,
 									"top": 463,
 									"width": 441.55029296875,
-									"height": 83
+									"height": 98
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 96,
 							"top": 440,
 							"width": 441.55029296875,
-							"height": 106,
+							"height": 121,
 							"nameLabel": {
 								"$ref": "AAAAAAGVKh0r7903opA="
 							},
@@ -502,9 +517,18 @@
 							"_parent": {
 								"$ref": "AAAAAAGVKh0r7900Cn0="
 							},
-							"name": "fechareservainicio",
-							"type": "TIMESTAMP",
+							"name": "fecha",
+							"type": "DATE",
 							"length": 0
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAGVKnZ0ml57y7Y=",
+							"_parent": {
+								"$ref": "AAAAAAGVKh0r7900Cn0="
+							},
+							"name": "horainicio",
+							"type": "TIME"
 						},
 						{
 							"_type": "ERDColumn",
@@ -512,8 +536,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGVKh0r7900Cn0="
 							},
-							"name": "fechareservafin",
-							"type": "TIMESTAMP",
+							"name": "horafin",
+							"type": "TIME",
 							"length": 0
 						},
 						{

@@ -34,8 +34,7 @@ public class Espacios {
 
     public Espacios() {}
 
-    public Espacios(Long id, String nombre, String tipo, Integer capacidadmax, String disponibilidad) {
-        this.id = id;
+    public Espacios(String nombre, String tipo, Integer capacidadmax, String disponibilidad) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.capacidadmax = capacidadmax;

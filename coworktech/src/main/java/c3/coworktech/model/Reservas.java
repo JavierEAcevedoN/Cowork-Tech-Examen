@@ -1,6 +1,7 @@
 package c3.coworktech.model;
 
-import java.sql.Timestamp;
+import java.sql.Date;
+import java.sql.Time;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -29,21 +30,24 @@ public class Reservas {
     private Long idespacio;
 
     @Column(nullable = false)
-    private Timestamp fechaservicioinicio;
+    private Date fecha;
 
     @Column(nullable = false)
-    private Timestamp fechaserviciofin;
+    private Time horainicio;
+
+    @Column(nullable = false)
+    private Time horafin;
 
     @Column(nullable = false)
     private String estado;
 
     public Reservas() {}
 
-    public Reservas(Long id, Long idespacio, Timestamp fechaservicioinicio, Timestamp fechaserviciofin, String estado) {
-        this.id = id;
+    public Reservas(Long idespacio, Date fecha, Time horainicio, Time horafin, String estado) {
         this.idespacio = idespacio;
-        this.fechaservicioinicio = fechaservicioinicio;
-        this.fechaserviciofin = fechaserviciofin;
+        this.fecha = fecha;
+        this.horainicio = horainicio;
+        this.horafin = horafin;
         this.estado = estado;
     }
 }
