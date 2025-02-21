@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import c3.coworktech.model.Espacios;
+import c3.coworktech.model.enums.disponibilidad;
+import c3.coworktech.model.enums.tipoEspacio;
 import c3.coworktech.repository.EspaciosRepository;
 import jakarta.transaction.Transactional;
 
@@ -22,7 +24,7 @@ public class EspaciosService {
         return espacios;
     }
 
-    public List<Espacios> getEspaciosByTipo(String tipo) {
+    public List<Espacios> getEspaciosByTipo(tipoEspacio tipo) {
         List<Espacios> espacios = espaciosRepository.findByTipo(tipo);
         if (espacios.isEmpty()) {
             // error
@@ -30,8 +32,8 @@ public class EspaciosService {
         return espacios;
     }
 
-    public List<Espacios> getEspaciosByDisponibilidad(String disponibilidad) {
-        List<Espacios> espacios = espaciosRepository.findByTipo(disponibilidad);
+    public List<Espacios> getEspaciosByDisponibilidad(disponibilidad disponibilidad) {
+        List<Espacios> espacios = espaciosRepository.findByDisponibilidad(disponibilidad);
         if (espacios.isEmpty()) {
             // error
         }

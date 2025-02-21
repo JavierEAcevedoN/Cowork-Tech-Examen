@@ -9,10 +9,12 @@ import org.springframework.data.repository.query.Param;
 
 import c3.coworktech.model.Espacios;
 import jakarta.transaction.Transactional;
+import c3.coworktech.model.enums.tipoEspacio;
+import c3.coworktech.model.enums.disponibilidad;
 
 public interface EspaciosRepository extends JpaRepository<Espacios, Long> {
-    List<Espacios> findByTipo(String tipo);
-    List<Espacios> findByDisponibilidad(String disponibilidad);
+    List<Espacios> findByTipo(tipoEspacio tipo);
+    List<Espacios> findByDisponibilidad(disponibilidad disponibilidad);
 
     @Modifying
     @Transactional
@@ -20,11 +22,11 @@ public interface EspaciosRepository extends JpaRepository<Espacios, Long> {
         "e.nombre = CASE WHEN :nombre IS NOT NULL THEN :nombre ELSE e.nombre END, " +
         "e.tipo = CASE WHEN :tipo IS NOT NULL THEN :tipo ELSE e.tipo END, " +
         "e.capacidadmax = CASE WHEN :capacidadmax IS NOT NULL THEN :capacidadmax ELSE e.capacidadmax END, " +
-        "e.disponibilidad = CASE WHEN :disponibilidad IS NOT NULL THEN :disponibilidad ELSE e.disponibilidad END, " +
+        "e.disponibilidad = CASE WHEN :disponibilidad IS NOT NULL THEN :disponibilidad ELSE e.disponibilidad END " +
         "WHERE e.id = :id")
     int patchEspacios(@Param("nombre") String nombre,
-        @Param("tipo") String tipo,
+        @Param("tipo") tipoEspacio tipo,
         @Param("capacidadmax") Integer capacidadmax,
-        @Param("disponibilidad") String disponibilidad,
+        @Param("disponibilidad") disponibilidad disponibilidad,
         @Param("id") Long id);
 }

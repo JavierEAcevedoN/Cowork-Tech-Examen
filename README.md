@@ -120,9 +120,6 @@ Base de datos relacional, PostgreSQL con Spring Data JPA.
 
 - **Espacios** (con las características mencionadas)
 - **Reservas** (con restricciones para evitar solapamientos)
-
----
-
 ---
 
 ## Tecnologías utilizadas
@@ -162,13 +159,13 @@ http://localhost:8081/swagger-ui.html
 
 ---
 
-## Scripts SQL de Creación
+## DDL
 
 ```sql
 CREATE TABLE espacios (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    tipo VARCHAR(50) CHECK (tipo IN ('Oficina privada', 'Sala de reuniones', 'Escritorio compartido'))),
+    tipo VARCHAR(50) CHECK (tipo IN ('OficinaPrivada', 'SalaReuniones', 'EscritorioCompartido'))),
     capacidad INT NOT NULL,
     disponibilidad CHECK (disponibilidad IN ('Activo', 'Inactivo')
 );
