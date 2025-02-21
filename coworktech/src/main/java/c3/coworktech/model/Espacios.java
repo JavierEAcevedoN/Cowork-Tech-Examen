@@ -14,10 +14,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
 @Getter
 @Setter
 @ToString
+@Entity
 @Table(name = "espacios")
 public class Espacios {
     @Id
@@ -28,14 +28,14 @@ public class Espacios {
     private String nombre;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private tipoEspacio tipo;
 
     @Column(nullable = false)
     private Integer capacidadmax;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private disponibilidad disponibilidad;
 
     public Espacios() {}

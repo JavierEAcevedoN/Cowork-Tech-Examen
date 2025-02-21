@@ -173,8 +173,9 @@ CREATE TABLE espacios (
 CREATE TABLE reservas (
     id SERIAL PRIMARY KEY,
     idespacio INT REFERENCES espacios(id),
-    fechareservainicio TIMESTAMP NOT NULL,
-    fechareservafin TIMESTAMP NOT NULL,
+    fecha DATE NOT NULL,
+    horainicio TIME NOT NULL,
+    horafin TIME NOT NULL,
     estado VARCHAR(20) CHECK (estado IN ('Pendiente', 'Confirmada', 'Cancelada'))
 );
 ```

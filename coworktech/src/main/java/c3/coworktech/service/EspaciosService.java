@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import c3.coworktech.model.Espacios;
+import c3.coworktech.model.enums.disponibilidad;
+import c3.coworktech.model.enums.tipoEspacio;
 import c3.coworktech.repository.EspaciosRepository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class EspaciosService {
@@ -16,28 +19,50 @@ public class EspaciosService {
     public List<Espacios> getEspacios() {
         List<Espacios> espacios = espaciosRepository.findAll();
         if (espacios.isEmpty()) {
-            
+            // error
         }
         return espacios;
     }
 
-    public List<Espacios> getEspaciosByTipo(String tipo) {
+    public List<Espacios> getEspaciosByTipo(tipoEspacio tipo) {
         List<Espacios> espacios = espaciosRepository.findByTipo(tipo);
         if (espacios.isEmpty()) {
-            
+            // error
         }
         return espacios;
     }
 
-    public List<Espacios> getEspaciosByDisponibilidad(String disponibilidad) {
-        List<Espacios> espacios = espaciosRepository.findByTipo(disponibilidad);
+    public List<Espacios> getEspaciosByDisponibilidad(disponibilidad disponibilidad) {
+        List<Espacios> espacios = espaciosRepository.findByDisponibilidad(disponibilidad);
         if (espacios.isEmpty()) {
-            
+            // error
         }
         return espacios;
     }
 
     public Espacios saveEspacios(Espacios espacios) {
-        return espaciosRepository.save(espacios);
+        try {
+            return espaciosRepository.save(espacios);
+        } catch (Exception e) {
+            // error
+            throw new RuntimeException();
+        }
+    }
+
+    @Transactional
+    public void patchEspacios(Long id, Espacios espacios) {
+        int patchedRows = espaciosRepository.patchEspacios(espacios.getNombre(), espacios.getTipo(), espacios.getCapacidadmax(), espacios.getDisponibilidad(), id);
+        if (patchedRows == 0) {
+            // error
+        }
+    }
+
+    public void deleteEspaciosById(Long id) {
+        try {
+            espaciosRepository.deleteById(id);
+        } catch (Exception e) {
+            // error
+            throw new RuntimeException();
+        }
     }
 }
