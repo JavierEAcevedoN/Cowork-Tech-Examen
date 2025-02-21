@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoworkTech - Sistema de Reservas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">CoworkTech</div>
+        <div class="nav-links">
+            <button class="nav-btn active" data-view="spaces">Espacios</button>
+            <button class="nav-btn" data-view="reservations">Mis Reservas</button>
+        </div>
+    </nav>
+
+    <main>
+
+        <section id="spaces-view" class="view active">
+            <div class="filters">
+                <select id="space-type-filter">
+                    <option value="">Todos los tipos</option>
+                    <option value="office">Oficina privada</option>
+                    <option value="meeting">Sala de reuniones</option>
+                    <option value="desk">Escritorio compartido</option>
+                </select>
+                <button id="filter-btn" class="btn">Filtrar</button>
+            </div>
+
+            <div class="spaces-grid" id="spaces-container">
+        
+            </div>
+        </section>
+
+
+        <section id="reservations-view" class="view">
+            <div class="reservations-list" id="reservations-container">
+        
+            </div>
+        </section>
+    </main>
+
+    <div id="reservation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Realizar Reserva</h2>
+            <form id="reservation-form">
+                <input type="hidden" id="space-id">
+                <div class="form-group">
+                    <label for="reservation-date">Fecha:</label>
+                    <input type="date" id="reservation-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="start-time">Hora de inicio:</label>
+                    <input type="time" id="start-time" required>
+                </div>
+                <div class="form-group">
+                    <label for="end-time">Hora de fin:</label>
+                    <input type="time" id="end-time" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Reservar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
