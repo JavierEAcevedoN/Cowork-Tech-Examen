@@ -188,4 +188,4 @@ CREATE TABLE reservas (
 
 ## Lista de Endpoints con ejemplos de uso
 
-*(lista de endpoints y ejemplos de llamadas con cURL o Postman.)*
+Hacer úso de Thunder Client para importar las pruebas de endpoints por medio de `.json`.
