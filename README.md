@@ -12,9 +12,9 @@ Actualmente, las reservas se gestionan de forma manual mediante llamadas y corre
 
 Para mejorar este proceso, CoworkTech ha decidido modernizar su sistema con una **API REST** que permita:
 
-✔ Consultar los espacios disponibles \
-✔ Reservar espacios en función de la disponibilidad \
-✔ Gestionar las reservas fácilmente 
+- Consultar los espacios disponibles 
+- Reservar espacios en función de la disponibilidad 
+- Gestionar las reservas fácilmente 
 
 Tu misión como **desarrollador backend** es construir esta API utilizando **Spring Boot** con **PostgreSQL**, asegurando un buen manejo de datos, validaciones y errores. 
 
@@ -39,10 +39,10 @@ Cada espacio debe contener:
 
 #### Funcionalidades a desarrollar
 
-✔ Registrar nuevos espacios\
-✔ Consultar la lista de espacios disponibles\
-✔ Modificar espacios existentes\
-✔ Eliminar espacios
+- Registrar nuevos espacios
+- Consultar la lista de espacios disponibles
+- Modificar espacios existentes
+- Eliminar espacios
 
 ---
 
@@ -60,16 +60,16 @@ Los usuarios pueden reservar espacios disponibles. Cada reserva contiene:
 
 #### Reglas para las reservas
 
- No puede haber dos reservas en el mismo horario para el mismo espacio.\
-✔ Los escritorios compartidos pueden ser reservados sin restricciones.\
-✏ El usuario solo puede **modificar o cancelar** reservas con estado "Pendiente".
+X No puede haber dos reservas en el mismo horario para el mismo espacio.
+- Los escritorios compartidos pueden ser reservados sin restricciones.
+- El usuario solo puede **modificar o cancelar** reservas con estado "Pendiente".
 
 #### Funcionalidades a desarrollar
 
-✔ Crear una nueva reserva\
-✔ Consultar todas las reservas activas\
-✔ Modificar una reserva (cambiar horario o cancelar)\
-✔ Eliminar reservas
+- Crear una nueva reserva
+- Consultar todas las reservas activas
+- Modificar una reserva
+- Eliminar reservas
 
 ---
 
@@ -128,7 +128,7 @@ Base de datos relacional, PostgreSQL con Spring Data JPA.
 - **Spring Boot 3**
 - **Spring Data JPA**
 - **PostgreSQL**
-- **Swagger/OpenAPI**
+- **Swagger**
 - **Lombok**
 
 ---
@@ -159,7 +159,7 @@ http://localhost:8081/swagger-ui.html
 
 ---
 
-## DDL
+## Esquma de tablas creadas por medio de JPA
 
 ```sql
 CREATE TABLE espacios (
@@ -185,4 +185,4 @@ CREATE TABLE reservas (
 
 ## Lista de Endpoints con ejemplos de uso
 
-Hacer úso de Thunder Client para importar las pruebas de endpoints por medio de `.json`.
+Hacer úso de Thunder Client para importar las pruebas de endpoints por medio de `ThunderClientConfig.json`.
