@@ -182,7 +182,7 @@ function renderSpaces(spacesToRender) {
                         ✏️
                     </button>
                     <button class="btn btn-icon delete" onclick="confirmDelete('${space.id}')" title="Eliminar">
-                        🗑️
+                        Eliminar
                     </button>
                 </div>
             </div>
