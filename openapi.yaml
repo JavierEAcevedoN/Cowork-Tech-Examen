@@ -1,0 +1,328 @@
+openapi: 3.0.3
+info:
+  title: CoworkTech API 1.0
+  description: API para gestionar los espacios disponibles en CoworkTech.
+  version: 1.0.0
+servers:
+  - url: https://localhost:8081/api
+tags:
+  - name: Espacios
+    description: Espacios donde se pueden hacer reservas.
+
+paths:
+  /espacios:
+    get:
+      summary: Obtener todos los espacios
+      description: Devuelve una lista de todos los espacios disponibles.
+      tags:
+        - Espacios
+      responses:
+        "200":
+          description: Lista de espacios obtenida con éxito
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Espacios"
+
+    post:
+      summary: Crear un nuevo espacio
+      description: Agrega un nuevo espacio a la base de datos.
+      tags:
+        - Espacios
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Espacios"
+            example:
+              nombre: "Black Mesa"
+              tipo: "OficinaPrivada"
+              capacidadmax: 5
+              disponibilidad: "Activo"
+      responses:
+        "200":
+          description: Espacio creado con éxito
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Espacios"
+
+  /espacios/tipo/{tipo}:
+    get:
+      summary: Obtener espacios por tipo
+      description: Filtra los espacios según el tipo especificado.
+      tags:
+        - Espacios
+      parameters:
+        - name: tipo
+          in: path
+          required: true
+          description: Tipo de espacio (ej. SalaReuniones, OficinaPrivada)
+          schema:
+            type: string
+          example: "SalaReuniones"
+      responses:
+        "200":
+          description: Espacios filtrados por tipo
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Espacios"
+
+  /espacios/disponibilidad/{disponibilidad}:
+    get:
+      summary: Obtener espacios por disponibilidad
+      description: Filtra los espacios según la disponibilidad.
+      tags:
+        - Espacios
+      parameters:
+        - name: disponibilidad
+          in: path
+          required: true
+          description: Estado de disponibilidad (ej. Activo, Inactivo)
+          schema:
+            type: string
+          example: "Activo"
+      responses:
+        "200":
+          description: Espacios filtrados por disponibilidad
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Espacios"
+
+  /espacios/{id}:
+    patch:
+      summary: Actualizar parcialmente un espacio
+      description: Modifica algunos datos del espacio identificado por ID.
+      tags:
+        - Espacios
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del espacio a actualizar
+          schema:
+            type: integer
+          example: 2
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Espacios"
+            example:
+              nombre: "Black Mesa"
+              tipo: "OficinaPrivada"
+              capacidadmax: 5
+              disponibilidad: "Activo"
+      responses:
+        "200":
+          description: Espacio actualizado con éxito
+
+    delete:
+      summary: Eliminar un espacio
+      description: Borra un espacio de la base de datos según su ID.
+      tags:
+        - Espacios
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del espacio a eliminar
+          schema:
+            type: integer
+          example: 2
+      responses:
+        "200":
+          description: Espacio eliminado con éxito
+
+  /reservas:
+    get:
+      summary: Obtener todas las reservas
+      description: Devuelve una lista de todas las reservas registradas.
+      tags:
+        - Reservas
+      responses:
+        "200":
+          description: Lista de reservas obtenida con éxito
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Reservas"
+
+    post:
+      summary: Crear una nueva reserva
+      description: Agrega una nueva reserva a la base de datos.
+      tags:
+        - Reservas
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Reservas"
+            example:
+              idespacio:
+                id: 19
+              fecha: "2026-03-01"
+              horainicio: "08:00:00"
+              horafin: "10:00:00"
+              estado: "Pendiente"
+      responses:
+        "200":
+          description: Reserva creada con éxito
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Reservas"
+
+  /reservas/estado/{estado}:
+    get:
+      summary: Obtener reservas por estado
+      description: Filtra las reservas según el estado especificado.
+      tags:
+        - Reservas
+      parameters:
+        - name: estado
+          in: path
+          required: true
+          description: Estado de la reserva (ej. Pendiente, Confirmada, Cancelada)
+          schema:
+            type: string
+          example: "Pendiente"
+      responses:
+        "200":
+          description: Reservas filtradas por estado
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Reservas"
+
+  /reservas/fecha/{fecha}:
+    get:
+      summary: Obtener reservas por fecha
+      description: Filtra las reservas según la fecha especificada.
+      tags:
+        - Reservas
+      parameters:
+        - name: fecha
+          in: path
+          required: true
+          description: Fecha de la reserva en formato YYYY-MM-DD
+          schema:
+            type: string
+            format: date
+          example: "2025-03-01"
+      responses:
+        "200":
+          description: Reservas filtradas por fecha
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Reservas"
+
+  /reservas/{id}:
+    patch:
+      summary: Actualizar parcialmente una reserva
+      description: Modifica algunos datos de la reserva identificada por ID.
+      tags:
+        - Reservas
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la reserva a actualizar
+          schema:
+            type: integer
+          example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Reservas"
+            example:
+              fecha: "2026-03-01"
+              horainicio: "08:00:00"
+              horafin: "10:00:00"
+              estado: "Pendiente"
+      responses:
+        "200":
+          description: Reserva actualizada con éxito
+
+components:
+  schemas:
+    Espacios:
+      type: object
+      description: Modelo que representa un espacio en CoworkTech.
+      properties:
+        id:
+          type: integer
+          description: ID del espacio
+          example: 2
+        nombre:
+          type: string
+          description: Nombre del espacio
+          example: "Sala de Juntas A"
+        tipo:
+          type: string
+          description: Tipo de espacio
+          example: "SalaReuniones"
+        capacidadmax:
+          type: integer
+          description: Capacidad máxima
+          example: 10
+        disponibilidad:
+          type: string
+          description: Estado de disponibilidad
+          example: "Activo"
+  
+    Reservas:
+      type: object
+      description: Modelo que representa una reserva en CoworkTech.
+      properties:
+        id:
+          type: integer
+          description: ID de la reserva
+          example: 1
+        idespacio:
+          type: object
+          description: Espacio asociado a la reserva
+          properties:
+            id:
+              type: integer
+              description: ID del espacio reservado
+              example: 1
+        fecha:
+          type: string
+          format: date
+          description: Fecha de la reserva
+          example: "2025-03-01"
+        horainicio:
+          type: string
+          format: time
+          description: Hora de inicio de la reserva
+          example: "08:00:00"
+        horafin:
+          type: string
+          format: time
+          description: Hora de finalización de la reserva
+          example: "10:00:00"
+        estado:
+          type: string
+          description: Estado de la reserva
+          example: "Pendiente"

@@ -455,7 +455,7 @@
 								"$ref": "AAAAAAGVKhUX7tz/u6Q="
 							},
 							"name": "tipo",
-							"type": "ENUM('OficinaPrivada', 'SalaReuniones', 'EscritorioCompartido')",
+							"type": "ENUM('Oficina privada', 'Sala de reuniones', 'Escritorio compartido')",
 							"length": 0
 						},
 						{
