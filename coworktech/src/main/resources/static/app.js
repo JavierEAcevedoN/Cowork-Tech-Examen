@@ -168,7 +168,7 @@ async function deleteSpace(spaceId) {
 function confirmDelete(spaceId) {
     currentSpaceId = spaceId;
     confirmModal.style.display = 'block';
-    
+    openReservationModal
     confirmDeleteBtn.onclick = () => deleteSpace(spaceId);
 }
 
@@ -192,7 +192,7 @@ function renderSpaces(spacesToRender) {
                 <p>Estado: ${space.disponibilidad === 'Activo' ? 'Disponible' : 'No disponible'}</p>
             </div>
             ${space.available === 'Activo' ? 
-                `<button class="btn" onclick="openReservationModal('${space.id}')">
+                `<button class="btn" onclick="openReservationModal(${space.id})">
                     Reservar
                 </button>` : 
                 '<button class="btn" disabled>No disponible</button>'
