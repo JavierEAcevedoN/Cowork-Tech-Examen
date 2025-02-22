@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8080/api';
+const BASE_URL = 'http://localhost:8081/api';
 const API_ESPACIOS = BASE_URL + '/espacios';
 const API_RESERVAS = BASE_URL + '/reservas';
 
@@ -39,7 +39,7 @@ reservationForm.addEventListener('submit', handleReservation);
 document.querySelector('.close').addEventListener('click', () => modal.style.display = 'none');
 navButtons.forEach(btn => btn.addEventListener('click', handleNavigation));
 
-newSpaceBtn.addEventListener('click', () => openSpaceModal());
+newSpaceBtn.addEventListener('click', () => openSpaceModal);
 newReservationBtn.addEventListener('click', openReservationModal);
 spaceForm.addEventListener('submit', handleSpaceSubmit);
 document.querySelectorAll('.close, .btn-secondary[data-modal]').forEach(element => {
@@ -89,10 +89,10 @@ function openSpaceModal(spaceId = null) {
         
         modalTitle.textContent = 'Editar Espacio';
         document.getElementById('space-form-id').value = space.id;
-        document.getElementById('space-name').value = space.name;
-        document.getElementById('space-type').value = space.type;
-        document.getElementById('space-capacity').value = space.capacity;
-        document.getElementById('space-available').value = space.available.toString();
+        document.getElementById('space-name').value = space.nombre;
+        document.getElementById('space-type').value = space.tipo;
+        document.getElementById('space-capacity').value = space.capacidadmax;
+        document.getElementById('space-available').value = space.disponibilidad;
         currentSpaceId = spaceId;
     } else {
     
@@ -176,20 +176,20 @@ function renderSpaces(spacesToRender) {
     spacesContainer.innerHTML = spacesToRender.map(space => `
         <div class="space-card">
             <div class="space-card-header">
-                <span class="space-type">${space.type}</span>
+                <span class="space-type">${space.tipo}</span>
                 <div class="space-actions">
-                    <button class="btn btn-icon" onclick="openSpaceModal('${space.id}')" title="Editar">
+                    <button class="btn btn-icon" onclick="openSpaceModal(${space.id})" title="Editar">
                         ✏️
                     </button>
-                    <button class="btn btn-icon delete" onclick="confirmDelete('${space.id}')" title="Eliminar">
+                    <button class="btn btn-icon delete" onclick="confirmDelete(${space.id})" title="Eliminar">
                         Eliminar
                     </button>
                 </div>
             </div>
-            <h3>${space.name}</h3>
+            <h3>${space.nombre}</h3>
             <div class="space-info">
-                <p>Capacidad: ${space.capacity} personas</p>
-                <p>Estado: ${space.available === 'Activo' ? 'Disponible' : 'No disponible'}</p>
+                <p>Capacidad: ${space.capacidadmax} personas</p>
+                <p>Estado: ${space.disponibilidad === 'Activo' ? 'Disponible' : 'No disponible'}</p>
             </div>
             ${space.available === 'Activo' ? 
                 `<button class="btn" onclick="openReservationModal('${space.id}')">
@@ -208,13 +208,13 @@ function filterSpaces() {
     let filteredSpaces = [...spaces];
 
     if (type) {
-        filteredSpaces = filteredSpaces.filter(space => space.type === type);
+        filteredSpaces = filteredSpaces.filter(space => space.tipo === type);
     }
 
     if (availability) {
         filteredSpaces = filteredSpaces.filter(space => {
-            if (availability === 'Activo') return space.available;
-            if (availability === 'Inactivo') return !space.available;
+            if (availability === 'Activo') return space.disponibilidad;
+            if (availability === 'Inactivo') return !space.disponibilidad;
             return true;
         });
     }
@@ -225,7 +225,6 @@ function filterSpaces() {
 function openReservationModal(spaceId = null, reservationId = null) {
     const modalTitle = document.getElementById('reservation-modal-title');
     const form = document.getElementById('reservation-form');
-    debugger
     if (reservationId) {
     
         const reservation = reservations.find(r => r.id === reservationId);
@@ -234,9 +233,9 @@ function openReservationModal(spaceId = null, reservationId = null) {
         modalTitle.textContent = 'Editar Reserva';
         document.getElementById('reservation-form-id').value = reservation.id;
         document.getElementById('space-id').value = reservation.spaceId;
-        document.getElementById('reservation-date').value = new Date(reservation.date).toISOString().split('T')[0];
-        document.getElementById('start-time').value = reservation.startTime;
-        document.getElementById('end-time').value = reservation.endTime;
+        document.getElementById('reservation-date').value = new Date(reservation.fecha).toISOString().split('T')[0];
+        document.getElementById('start-time').value = reservation.horainicio;
+        document.getElementById('end-time').value = reservation.horafin;
         currentReservationId = reservationId;
     } else {
     
@@ -255,10 +254,10 @@ async function handleReservation(e) {
     
     const reservationData = {
         spaceId: document.getElementById('space-id').value,
-        date: document.getElementById('reservation-date').value,
-        startTime: document.getElementById('start-time').value,
-        endTime: document.getElementById('end-time').value,
-        status: currentReservationId ? 'Pendiente' : 'Pendiente'
+        fecha: document.getElementById('reservation-date').value,
+        horainicio: document.getElementById('start-time').value,
+        horafin: document.getElementById('end-time').value,
+        estado: currentReservationId ? 'Pendiente' : 'Pendiente'
     };
 
     try {
@@ -311,6 +310,7 @@ async function loadReservations() {
 }
 
 function filterReservations() {
+    debugger;
     const filterDate = reservationFilterDate.value;
     const filterStatus = reservationStatusFilter.value;
 
@@ -319,14 +319,14 @@ function filterReservations() {
     if (filterDate) {
         filteredReservations = filteredReservations.filter(reservation => {
         
-            const reservationDate = new Date(reservation.date).toISOString().split('T')[0];
+            const reservationDate = new Date(reservation.fecha).toISOString().split('T')[0];
             return reservationDate === filterDate;
         });
     }
 
     if (filterStatus) {
         filteredReservations = filteredReservations.filter(reservation => 
-            reservation.status === filterStatus
+            reservation.estado === filterStatus
         );
     }
 
@@ -343,17 +343,17 @@ function renderReservations(reservationsToRender = reservations) {
     reservationsContainer.innerHTML = reservationsToRender.map(reservation => `
         <div class="reservation-card">
             <div>
-                <h4>${getSpaceName(reservation.spaceId)}</h4>
-                <p>Fecha: ${formatDate(reservation.date)}</p>
-                <p>Horario: ${reservation.startTime} - ${reservation.endTime}</p>
-                <p>Estado: ${reservation.status}</p>
+                <h4>${getSpaceName(reservation.id)}</h4>
+                <p>Fecha: ${formatDate(reservation.fecha)}</p>
+                <p>Horario: ${reservation.horainicio} - ${reservation.horafin}</p>
+                <p>Estado: ${reservation.estado}</p>
             </div>
             <div class="reservation-actions">
-                <button class="btn btn-icon" onclick="openReservationModal(null, '${reservation.id}')" title="Editar">
+                <button class="btn btn-icon" onclick="openReservationModal(null, ${reservation.id})" title="Editar">
                             Editar
                     </button>
                 ${reservation.status === 'Pendiente' ? `
-                    <button class="btn btn-icon delete" onclick="cancelReservation('${reservation.id}')" title="Cancelar">
+                    <button class="btn btn-icon delete" onclick="cancelReservation(${reservation.id})" title="Cancelar">
                         Cancelar Reserva
                     </button>
                 ` : ''}
@@ -396,7 +396,7 @@ async function cancelReservation(reservationId) {
 
 function getSpaceName(spaceId) {
     const space = spaces.find(s => s.id === spaceId);
-    return space ? space.name : 'Espacio no encontrado';
+    return space ? space.nombre : 'Espacio no encontrado';
 }
 
 function formatDate(dateString) {

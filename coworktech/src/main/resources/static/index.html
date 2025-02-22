@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoworkTech - Sistema de Reservas</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <nav class="navbar">
         <div class="logo">CoworkTech</div>
@@ -33,7 +35,7 @@
                 <button id="filter-spaces-btn" class="btn">Filtrar</button>
                 <button id="new-space-btn" class="btn btn-primary">Nuevo Espacio</button>
             </div>
-        
+
             <div class="spaces-grid" id="spaces-container">
             </div>
         </section>
@@ -51,14 +53,14 @@
                         <option value="">Todos los estados</option>
                         <option value="Pendiente">Pendiente</option>
                         <option value="Confirmada">Confirmada</option>
-                        <option value="Cancelada">Cancelada</option>
+                        <option value="CANCELLED">Cancelada</option>
                     </select>
                 </div>
                 <button id="filter-reservations-btn" class="btn">Filtrar</button>
                 <button id="clear-filters-btn" class="btn btn-secondary">Limpiar filtros</button>
                 <button id="new-reservation-btn" class="btn btn-primary">Nueva Reserva</button>
             </div>
-        
+
             <div class="reservations-list" id="reservations-container">
             </div>
         </section>
@@ -135,7 +137,6 @@
             </div>
         </div>
     </div>
-
-    <script src="app.js"></script>
+    <script defer src="app.js"></script>
 </body>
 </html>
