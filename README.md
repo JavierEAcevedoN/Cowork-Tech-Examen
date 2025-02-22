@@ -222,7 +222,3 @@ INSERT INTO reservas (idespacio, fecha, horainicio, horafin, estado) VALUES
 ```
 
 ---
-
-## Lista de Endpoints con ejemplos de uso
-
-Hacer úso de Thunder Client para importar la colección de pruebas con endpoints por medio de `ThunderClientConfig.json`.

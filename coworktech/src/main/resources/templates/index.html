@@ -21,16 +21,17 @@
             <div class="filters">
                 <select id="space-type-filter">
                     <option value="">Todos los tipos</option>
-                    <option value="office">Oficina privada</option>
-                    <option value="meeting">Sala de reuniones</option>
-                    <option value="desk">Escritorio compartido</option>
+                    <option value="OficinaPrivada">Oficina privada</option>
+                    <option value="SalaReuniones">Sala de reuniones</option>
+                    <option value="EscritorioCompartido">Escritorio compartido</option>
                 </select>
                 <select id="availability-filter">
                     <option value="">Toda disponibilidad</option>
-                    <option value="available">Disponible</option>
-                    <option value="unavailable">No disponible</option>
+                    <option value="Activo">Disponible</option>
+                    <option value="Inactivo">No disponible</option>
                 </select>
                 <button id="filter-spaces-btn" class="btn">Filtrar</button>
+                <button id="new-space-btn" class="btn btn-primary">Nuevo Espacio</button>
             </div>
         
             <div class="spaces-grid" id="spaces-container">
@@ -48,13 +49,14 @@
                     <label for="reservation-status-filter">Estado:</label>
                     <select id="reservation-status-filter">
                         <option value="">Todos los estados</option>
-                        <option value="PENDING">Pendiente</option>
-                        <option value="CONFIRMED">Confirmada</option>
-                        <option value="CANCELLED">Cancelada</option>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Confirmada">Confirmada</option>
+                        <option value="Cancelada">Cancelada</option>
                     </select>
                 </div>
                 <button id="filter-reservations-btn" class="btn">Filtrar</button>
                 <button id="clear-filters-btn" class="btn btn-secondary">Limpiar filtros</button>
+                <button id="new-reservation-btn" class="btn btn-primary">Nueva Reserva</button>
             </div>
         
             <div class="reservations-list" id="reservations-container">
@@ -65,8 +67,9 @@
     <div id="reservation-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Realizar Reserva</h2>
+            <h2 id="reservation-modal-title">Nueva Reserva</h2>
             <form id="reservation-form">
+                <input type="hidden" id="reservation-form-id">
                 <input type="hidden" id="space-id">
                 <div class="form-group">
                     <label for="reservation-date">Fecha:</label>
@@ -82,6 +85,54 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Reservar</button>
             </form>
+        </div>
+    </div>
+
+    <div id="spaces-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="spaces-modal">&times;</span>
+            <h2 id="space-modal-title">Nuevo Espacio</h2>
+            <form id="space-form">
+                <input type="hidden" id="space-form-id">
+                <div class="form-group">
+                    <label for="space-name">Nombre:</label>
+                    <input type="text" id="space-name" required placeholder="Ej: Sala Azul">
+                </div>
+                <div class="form-group">
+                    <label for="space-type">Tipo:</label>
+                    <select id="space-type" required>
+                        <option value="OficinaPrivada">Oficina privada</option>
+                        <option value="SalaReuniones">Sala de reuniones</option>
+                        <option value="EscritorioCompartido">Escritorio compartido</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="space-capacity">Capacidad máxima:</label>
+                    <input type="number" id="space-capacity" required min="1">
+                </div>
+                <div class="form-group">
+                    <label for="space-available">Disponibilidad:</label>
+                    <select id="space-available" required>
+                        <option value="Activo">Disponible</option>
+                        <option value="Inactivo">No disponible</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" data-modal="spaces-modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="confirm-modal" class="modal">
+        <div class="modal-content">
+            <h2>Confirmar Eliminación</h2>
+            <p>¿Estás seguro de que deseas eliminar este espacio? Esta acción no se puede deshacer.</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" data-modal="confirm-modal">Cancelar</button>
+                <button class="btn btn-danger" id="confirm-delete-btn">Eliminar</button>
+            </div>
         </div>
     </div>
 
