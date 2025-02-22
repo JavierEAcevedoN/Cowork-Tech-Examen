@@ -50,7 +50,7 @@ public class ReservasService {
 
     @Transactional
     public void patchReservas(Long id, Reservas reservas) {
-        int patchedRows = reservasRepository.patchEspacios(reservas.getFecha(), reservas.getHorainicio(), reservas.getHorafin(), reservas.getEstado(), id);
+        int patchedRows = reservasRepository.patchReservas(reservas.getFecha(), reservas.getHorainicio(), reservas.getHorafin(), reservas.getEstado(), id);
         if (patchedRows == 0) {
             // error
         }

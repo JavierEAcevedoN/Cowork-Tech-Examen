@@ -22,8 +22,7 @@ public interface ReservasRepository extends JpaRepository<Reservas, Long> {
     @Modifying
     @Transactional
     @Query("UPDATE Reservas r SET r.fecha = CASE WHEN :fecha IS NOT NULL THEN :fecha ELSE r.fecha END, r.horainicio = CASE WHEN :horainicio IS NOT NULL THEN :horainicio ELSE r.horainicio END, r.horafin = CASE WHEN :horafin IS NOT NULL THEN :horafin ELSE r.horafin END, r.estado = CASE WHEN :estado IS NOT NULL THEN :estado ELSE r.estado END WHERE r.id = :id")
-
-    int patchEspacios(@Param("fecha") Date fecha,
+    int patchReservas(@Param("fecha") Date fecha,
         @Param("horainicio") Time horainicio,
         @Param("horafin") Time horafin,
         @Param("estado") estadoReservas estado,
